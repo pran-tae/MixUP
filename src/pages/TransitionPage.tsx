@@ -11,10 +11,7 @@ export default function Transition() {
     <div className="flex flex-col items-center justify-center h-screen">
       <div className="text-4xl mb-4">Mixing...</div>
 
-      <button
-        className="text-4xl border border-black p-4 rounded-2xl hover:bg-gray-100 cursor-pointer"
-        onClick={handleClick}
-      >
+      <button className="text-4xl p-4" onClick={handleClick}>
         Next
       </button>
     </div>

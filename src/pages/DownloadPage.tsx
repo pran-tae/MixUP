@@ -9,7 +9,7 @@ export default function Download() {
 
   return (
     <div className="flex items-center justify-center h-screen">
-      <button className="text-4xl border border-black p-4 rounded-2xl hover:bg-gray-100 cursor-pointer" onClick={handleClick}>
+      <button className="text-4xl p-4" onClick={handleClick}>
         Back to home
       </button>
     </div>
