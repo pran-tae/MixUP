@@ -9,8 +9,8 @@ export default function Home() {
 
   return (
     <div className="flex items-center justify-center h-screen">
-      <button className="text-4xl border border-black p-4 rounded-2xl hover:bg-gray-100 cursor-pointer" onClick={handleClick}>
-        Start!
+      <button className="text-4xl p-4" onClick={handleClick}>
+        START!
       </button>
     </div>
   );
