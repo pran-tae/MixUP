@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import Logo from "../components/Logo.tsx";
 
 export default function Upload() {
   const navigate = useNavigate();
@@ -8,10 +9,13 @@ export default function Upload() {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen">
-      <button className="text-4xl p-4" onClick={handleClick}>
-        Mix!
-      </button>
+    <div className="flex items-center p-16 h-screen flex-col ">
+      <Logo />
+      <div className="flex items-center justify-center flex-col h-full">
+        <button className="text-button text-4xl p-4" onClick={handleClick}>
+          Mix!
+        </button>
+      </div>
     </div>
   );
 }
