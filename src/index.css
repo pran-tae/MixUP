@@ -7,12 +7,12 @@
   font-family: 'Tilt Neon', sans-serif;
 }
 
-button {
+.text-button {
   border: 1px solid #8F78FF;
   border-radius: 10px;
 }
 
-button:hover {
+.text-button:hover {
   background-color: rgba(255, 255, 255, 0.25);
   cursor: pointer;
 }
