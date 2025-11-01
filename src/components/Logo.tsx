@@ -8,8 +8,8 @@ export default function Logo() {
   };
 
   return (
-    <button className="w-xl" onClick={handleClick}>
-      <img src="logo.png" alt="logo" />
+    <button className="w-xl -mb-16" onClick={handleClick}>
+      <img className="cursor-pointer" src="logo.png" alt="logo" />
     </button>
   );
 }
