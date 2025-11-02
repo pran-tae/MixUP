@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
-
+import { useNavigate } from "react-router-dom";
 export default function Home() {
+  const navigate = useNavigate();
   return (
     <div className="bg-black text-white flex flex-col items-center justify-center min-h-screen overflow-y-auto p-8">
       <h1 className="text-6xl font-bold mb-6">PennPulse</h1>
