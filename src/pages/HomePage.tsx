@@ -5,25 +5,21 @@ import Logo from "../components/Logo";
 export default function Home() {
   const navigate = useNavigate();
 
-  const handleUpload = () => {
+  const handleUploadClick = () => {
     navigate("/choose-upload");
   };
 
-  const handleDownload = () => {
-    // change this route to whatever your download page/flow is
+  const handleDownloadClick = () => {
     navigate("/download");
   };
 
   return (
     <div className="bg-black text-white flex flex-col items-center justify-center min-h-screen overflow-y-auto p-8">
-      <Logo />
-
-      <h1 className="text-6xl font-bold mb-6">PennPulse</h1>
-
+      <Logo/>
       <p className="text-lg mb-12">Redefine your music one pulse at a time</p>
 
-      <div className="border border-purple-400 rounded-xl p-8 text-center mb-12 bg-black shadow-lg shadow-purple-900/20 w-[236px] md:w-[600px]">
-        <h2 className="text-xl font-semibold mb-4">Welcome to PennPulse.</h2>
+      <div className="border border-purple-400 rounded-xl p-8 text-center mb-12 bg-black shadow-lg shadow-purple-900/20 w-236">
+          <h2 className="text-xl font-semibold mb-4">Welcome to PennPulse.</h2>
         <p className="text-md leading-relaxed">
           PennPulse is a one-stop platform that enhances music mixing. We turn
           your playlist into a continuous, on-beat, exportable mix that you can
@@ -34,7 +30,11 @@ export default function Home() {
       </div>
 
       <div className="mb-20 text-center">
-        <h2 className="text-3xl font-semibold mb-12">PennPulse in Steps</h2>
+        <div className="flex items-center justify-center gap-4 mb-12">
+          <img src="/src/assets/left_header_decoration.png" alt="left_design" />
+          <h2 className="text-3xl font-semibold">PennPulse in Steps</h2>
+          <img src="/src/assets/right_header_decoration.png" alt="right_design" />
+          </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           <div className="border border-purple-400 rounded-xl shadow-lg shadow-purple-900/20 bg-black hover:bg-indigo-400/30 w-72 h-54">
             <h3 className="text-xl bg-gradient-to-r from-indigo-400 to-pink-300 font-semibold p-4 rounded-t-xl">
@@ -72,6 +72,7 @@ export default function Home() {
           onClick={handleUpload}
           className="w-48 text-2xl font-semibold border border-purple-400 p-4 rounded-2xl shadow-lg shadow-purple-900/20 
                      hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-500 cursor-pointer"
+          onClick={handleUploadClick}
         >
           UPLOAD
         </motion.button>
@@ -82,6 +83,7 @@ export default function Home() {
           onClick={handleDownload}
           className="w-48 text-2xl font-semibold border border-purple-400 p-4 rounded-2xl shadow-lg shadow-purple-900/20 
                      hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-500 cursor-pointer"
+          onClick={handleDownloadClick}
         >
           DOWNLOAD
         </motion.button>
