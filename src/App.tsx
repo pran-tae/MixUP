@@ -3,7 +3,7 @@ import Home from "./pages/HomePage";
 import Upload from "./pages/UploadPage";
 import Transition from "./pages/TransitionPage";
 import Download from "./pages/DownloadPage";
-import SoundCloudDownload from "./pages/SoundcloudDownloadPage";
+import SoundCloudDownload from "./pages/SoundCloudDownloadPage";
 import ChooseUpload from "./pages/ChooseUploadPage";
 
 function App() {
