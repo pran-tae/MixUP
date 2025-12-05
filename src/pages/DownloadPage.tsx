@@ -1,70 +1,174 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import button from "../assets/download_button.png";
 import Logo from "../components/Logo.tsx";
 import { motion } from "framer-motion";
+import { ChevronLeft, Music2, SkipBack, Play, Pause, SkipForward, Menu } from "lucide-react";
+import SongListOverlay from "../components/SongListOverlay.tsx";
 
 export default function Download() {
   const navigate = useNavigate();
+  const [showPlaylist, setShowPlaylist] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [currentSong, setCurrentSong] = useState("Song 1: Audio 1");
 
-  const handleClick = () => {
+  const handleBack = () => {
     navigate("/");
   };
 
+  const handleDownload = () => {
+    console.log("Download mix");
+  };
+
+  const togglePlayPause = () => {
+    setIsPlaying(!isPlaying);
+  };
+
   return (
-    <div className="flex items-center pt-16 h-screen flex-col ">
-      <Logo />
-      <div className="flex items-center justify-center gap-4 mb-12 -mt-4">
-      <img src="/src/assets/left_header_decoration.png" alt="left_design" />
-          <h2 className="text-3xl font-semibold">Choose your Pulse </h2>
-      <img src="/src/assets/right_header_decoration.png" alt="right_design" />
+    <div className="min-h-screen bg-black text-white flex flex-col items-center justify-between py-16 relative">
+      <button
+        onClick={handleBack}
+        className="absolute top-8 left-8 text-white hover:text-purple-400 transition-colors"
+      >
+        <ChevronLeft size={48} strokeWidth={1.5} />
+      </button>
+
+      <div>
+        <Logo />
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-          <div className="text-center border border-purple-400 rounded-xl shadow-lg shadow-purple-900/20 bg-black w-108 h-108">
-            <h3 className="text-xl bg-gradient-to-r from-indigo-400 to-pink-300 font-semibold p-4 rounded-t-xl -mb-12">
-              File Upload
-            </h3>
 
-            <div className = "flex flex-col items-center justify-center">
-            <img className="cursor-pointer scale-50 -mb-24" src="/src/assets/download_button.png" alt="left_design" />
-            <p className="text-md leading-relaxed p-4">
-              Create your mix by uploading mp3 files of your songs.
-            </p>
+      <div className="flex-1 flex flex-col items-center justify-center gap-8">
+        <h1 className="text-4xl font-semibold mb-4">Your mix is ready!</h1>
 
-            <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            className="w-48 text-2xl font-semibold border border-purple-400 p-4 rounded-2xl shadow-lg shadow-purple-900/20 
-                      hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-500 cursor-pointer"
-            
+        <motion.div
+          className="relative flex items-center justify-center cursor-pointer"
+          onClick={handleDownload}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <motion.div
+            className="absolute w-80 h-80 rounded-full"
+            style={{
+              background: "linear-gradient(135deg, rgba(255,165,100,0.6) 0%, rgba(200,100,200,0.6) 100%)",
+              filter: "blur(20px)",
+            }}
+            animate={{
+              opacity: [0.3, 0.6, 0.3],
+              scale: [0.95, 1.05, 0.95],
+            }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+
+          <div className="relative w-72 h-72 rounded-full border-4 border-transparent bg-gradient-to-br from-orange-400 via-purple-500 to-pink-500 flex items-center justify-center shadow-2xl">
+            <div className="absolute inset-1 rounded-full bg-black flex items-center justify-center">
+              <Music2 size={120} className="text-white" strokeWidth={1.5} />
+            </div>
+          </div>
+
+          <motion.div
+            className="absolute -left-24 top-1/3"
+            animate={{
+              y: [0, -20, 0],
+              opacity: [0.5, 0.8, 0.5],
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
           >
-            START
-          </motion.button>
-          </div>
-          </div>
+            <svg width="80" height="60" viewBox="0 0 80 60">
+              <path
+                d="M 0 30 Q 20 10, 40 30 T 80 30"
+                stroke="rgba(100, 100, 255, 0.6)"
+                strokeWidth="2"
+                fill="none"
+              />
+            </svg>
+          </motion.div>
 
-          <div className="text-center border border-purple-400 rounded-xl shadow-lg shadow-purple-900/20 bg-black w-108 h-108">
-            <h3 className="text-xl mb-12 bg-gradient-to-r from-pink-500 to-purple-500 font-semibold p-4 rounded-t-xl">
-              SoundCloud Upload
-            </h3>
-            <div className = "flex flex-col items-center justify-center">
-            <img className="cursor-pointer scale-75 mb-8" src="/src/assets/soundcloud_logo.png" alt="left_design" />
-
-            <p className="text-md leading-relaxed p-4">
-              Create your mix by uploading a playlist via SoundCloud.
-            </p>
-
-            <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            className="w-48 text-2xl font-semibold border border-purple-400 p-4 rounded-2xl shadow-lg shadow-purple-900/20 
-                      hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-500 cursor-pointer"
-            
+          <motion.div
+            className="absolute -right-24 top-1/3"
+            animate={{
+              y: [0, 20, 0],
+              opacity: [0.5, 0.8, 0.5],
+            }}
+            transition={{
+              duration: 2.5,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
           >
-            START
-          </motion.button>
+            <svg width="80" height="60" viewBox="0 0 80 60">
+              <path
+                d="M 0 30 Q 20 50, 40 30 T 80 30"
+                stroke="rgba(255, 100, 100, 0.6)"
+                strokeWidth="2"
+                fill="none"
+              />
+            </svg>
+          </motion.div>
+        </motion.div>
+
+        <p className="text-xl text-neutral-200 mt-4 mb-12">Tap the button to download</p>
+      </div>
+
+      <div className="w-full max-w-3xl px-8 mb-8">
+        <div className="border border-purple-400/40 rounded-2xl p-6 bg-gradient-to-br from-purple-900/10 to-blue-900/10 backdrop-blur-sm">
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center gap-4 flex-1">
+              <button
+                onClick={() => setShowPlaylist(!showPlaylist)}
+                className="text-white hover:text-purple-400 transition-colors"
+              >
+                <Menu size={28} strokeWidth={1.5} />
+              </button>
+              <span className="text-lg">{currentSong}</span>
+            </div>
+
+            <div className="flex items-center gap-6">
+              <button className="text-white hover:text-purple-400 transition-colors">
+                <SkipBack size={28} strokeWidth={1.5} />
+              </button>
+              <button
+                onClick={togglePlayPause}
+                className="text-white hover:text-purple-400 transition-colors"
+              >
+                {isPlaying ? (
+                  <Pause size={32} strokeWidth={1.5} fill="white" />
+                ) : (
+                  <Play size={32} strokeWidth={1.5} fill="white" />
+                )}
+              </button>
+              <button className="text-white hover:text-purple-400 transition-colors">
+                <SkipForward size={28} strokeWidth={1.5} />
+              </button>
+            </div>
           </div>
+
+          <div className="w-full h-1 bg-gray-700 rounded-full">
+            <motion.div
+              className="h-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"
+              initial={{ width: "0%" }}
+              animate={{ width: isPlaying ? "100%" : "0%" }}
+              transition={{ duration: 240, ease: "linear" }}
+            />
           </div>
         </div>
+      </div>
+
+      {showPlaylist && (
+        <SongListOverlay
+          onClose={() => setShowPlaylist(false)}
+          onSelectSong={(song) => {
+            setCurrentSong(song);
+            setShowPlaylist(false);
+          }}
+        />
+      )}
     </div>
   );
 }
