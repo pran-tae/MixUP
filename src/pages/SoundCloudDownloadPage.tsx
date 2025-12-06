@@ -5,12 +5,17 @@ import Logo from "../components/Logo";
 import left_decor from "../assets/left_header_decoration.png";
 import right_decor from "../assets/right_header_decoration.png";
 import axios from "axios";
+import { ArrowLeft } from "lucide-react";
 
 export default function SoundCloudDownload() {
   const url = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000';
   const navigate = useNavigate();
   const [playlistURL, setPlaylistURL] = useState("");
   const [error, setError] = useState("");
+
+  const handleBackClick = () => {
+    navigate("/choose-upload");
+  };
 
   const handleClick = async (id: string) => {
     if (!id.trim()) {
@@ -30,7 +35,15 @@ export default function SoundCloudDownload() {
   };
 
   return (
-    <div className="flex items-center pt-16 h-screen flex-col">
+    <div className="bg-gradient-to-b from-blue-950 via-purple-950 to-black text-white min-h-screen flex flex-col p-8 relative">
+      <button
+        onClick={handleBackClick}
+        className="absolute top-8 left-8 text-white hover:text-purple-400 transition-colors"
+      >
+        <ArrowLeft size={48} strokeWidth={2} />
+      </button>
+
+      <div className="flex items-center pt-8 flex-col">
       <Logo />
 
       <div className="flex items-center justify-center flex-col h-full gap-15">
@@ -70,6 +83,7 @@ export default function SoundCloudDownload() {
             <p className="text-red-500 text-sm mt-2 font-medium">{error}</p>
           )}
         </div>
+      </div>
       </div>
     </div>
   );

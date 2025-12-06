@@ -83,7 +83,7 @@ export default function UploadFiles() {
         <div className="h-px w-64 bg-gradient-to-l from-transparent via-purple-500 to-pink-500" />
       </div>
 
-      <div className="flex flex-1 items-center justify-center gap-16 pb-16">
+      <div className="flex flex-1 items-center justify-center gap-4 pb-16">
         <motion.div
           whileHover={{ scale: 1.02 }}
           className="border-2 border-purple-500/60 rounded-2xl w-[520px] h-[420px]
